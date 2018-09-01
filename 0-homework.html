@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>网页</title>
+    <meta charset="utf-8">
+    <style></style>
+  </head>
+  <body>
+     <!--
+       1.页面中创建以下几个元素：
+         文本框-用户名称：uname
+         密码框-用户密码：upwd
+         密码框-重复密码：cpwd
+         以上三个元素后，个创建一个span元素。
+       2.添加以下事件
+         1.文本框获取焦点时，提示“用户名称6-12位”
+         2.文本框失去焦点时，判断，用户名称是否为空并给出提示（用户名不能为空/通过）
+         3.密码框完成以上相同操作
+         4.cpwd失去焦点时，判断cpwd的值是否与upwd的值是否一致，并给出提示。
+     -->
+     <p>
+     用户名称：<input type="text" id="uname" onfocus="uname_focus()" onblur="uname_blur()">
+               <span id="showUname"></span>
+     </p>
+     <p>
+      用户密码：<input type="password" id="upwd">
+                <span id="showUpwd"></span>
+     </p>
+     <p>
+       重复密码：<input type="password" id="cpwd" onblur="cpwd_blur()">
+                <span id="showCpwd"></span>
+     </p>
+     <script src="common.js"></script>
+     <script>
+        //1.用户名称获取焦点
+        function uname_focus(){
+          $("showUname").innerHTML="用户名称6-12位";
+        }
+        //2.用户名称失去焦点
+        function uname_blur(){
+          var uname=$("uname").value;
+          if(uname==""){
+            $("showUname").innerHTML="用户名称不能为空！";
+          }else{
+            $("showUname").innerHTML="通过！";
+          }
+        }
+        //3.验证两次密码是否一致
+        function cpwd_blur(){
+          var upwd=$("upwd").value;
+          var cpwd=$("cpwd").value;
+          if(upwd!="" && upwd==cpwd){
+            $("showCpwd").innerHTML="通过";
+          }else{
+            $("showCpwd").innerHTML="两次密码不一致！";
+          }
+        }
+     </script>
+
+  </body>
+</html>
